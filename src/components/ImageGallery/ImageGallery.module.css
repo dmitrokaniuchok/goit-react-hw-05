@@ -1,0 +1,23 @@
+.containerList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.containerItem {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.containerItem img {
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.containerItem img:hover {
+  transform: scale(1.05);
+}
