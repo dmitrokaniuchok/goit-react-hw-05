@@ -1,0 +1,8 @@
+.container {
+  background-color: #2a2a2a;
+  color: #fafafa;
+  padding: 16px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
