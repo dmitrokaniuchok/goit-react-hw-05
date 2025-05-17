@@ -17,11 +17,16 @@ export default function MovieList({ movies }) {
               src={
                 poster_path
                   ? `https://image.tmdb.org/t/p/w300${poster_path}`
-                  : "https://via.placeholder.com/300x450?text=No+Image"
+                  : "https://via.placeholder.com/300x450.png?text=No+Image"
               }
               alt={title}
               className={css.poster}
+              onError={(e) => {
+                e.target.src =
+                  "https://via.placeholder.com/300x450.png?text=No+Image";
+              }}
             />
+
             <p className={css.title}>{title}</p>
           </Link>
         </li>

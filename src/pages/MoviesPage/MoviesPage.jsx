@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, Link, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { searchMovies } from "../../../apiKey";
 import toast from "react-hot-toast";
 import css from "./MoviesPage.module.css";
 import Loader from "../../components/Loader/Loader";
+import MovieList from "../../components/MovieList/MovieList";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +12,6 @@ export default function MoviesPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
-  const location = useLocation();
 
   useEffect(() => {
     if (!query) return;
@@ -67,19 +67,7 @@ export default function MoviesPage() {
         </button>
       </form>
 
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {isLoading ? <Loader /> : <MovieList movies={movies} />}
     </div>
   );
 }
