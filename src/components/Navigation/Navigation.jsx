@@ -1,6 +1,6 @@
 import css from "./Navigation.module.css";
-import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { IoHomeOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 
 export default function Navigation() {
@@ -8,14 +8,24 @@ export default function Navigation() {
     <nav className={css.navigation}>
       <NavLink
         to="/"
-        className={({ isActive }) => (isActive ? css.active : "")}
+        className={({ isActive }) =>
+          `${css.link} ${isActive ? css.active : ""}`
+        }
       >
-        Home
+        <IoHomeOutline className={css.icon} />
+        <span>Home</span>
       </NavLink>
-      <Link to="/movies">
-        More Movies
+
+      <NavLink
+        to="/movies"
+        end
+        className={({ isActive }) =>
+          `${css.link} ${isActive ? css.active : ""}`
+        }
+      >
         <BsSearch className={css.icon} />
-      </Link>
+        <span>More movies</span>
+      </NavLink>
     </nav>
   );
 }

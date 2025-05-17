@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getPopularMovies } from "../../../apiKey";
 import MovieList from "../../components/MovieList/MovieList";
 import css from "./HomePage.module.css";
+import Loader from "../../components/Loader/Loader";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -25,7 +26,7 @@ export default function HomePage() {
     <div className={css.box}>
       <h1 className={css.title}>Trending today</h1>
 
-      {loading && <strong>Loading...</strong>}
+      {loading && <Loader />}
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
